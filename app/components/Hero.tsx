@@ -6,7 +6,6 @@ async function getData() {
   const query = "*[_type == 'heroImage'][0]";
 
   const data = await client.fetch(query);
-  console.log(data);
 
   return data;
 }
@@ -43,14 +42,14 @@ export default async function Hero() {
           </div>
 
           <div className="overflow-hidden rounded-lg bg-gray-100 shadow-lg">
-            <Image
+            {/* <Image
               src={urlFor(data.image2).url()}
               alt="Great Photo"
               className="h-full w-full object-cover object-center"
               width={500}
               height={500}
               priority
-            />
+            /> */}
           </div>
         </div>
       </div>
