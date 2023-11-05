@@ -12,8 +12,6 @@ async function getData() {
 
 export default async function Hero() {
   const data = await getData();
-  console.log(data);
-
   return (
     <section className="mx-auto max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8">
       <div className="mb-8 flex flex-wrap justify-between md:mb-16">
@@ -29,27 +27,27 @@ export default async function Hero() {
 
         <div className="mb-12 flex w-full md:mb-16 lg:w-2/3">
           <div className="relative left-12 top-12 z-10 -ml-12 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:left-16 md:top-16 lg:ml-0">
-            {data && data.image1 && (
-              <Image
-                src={urlFor(data.image1).url()}
-                alt="Great Photo"
-                className="h-full w-full object-cover object-center"
-                priority
-                width={500}
-                height={500}
-              />
-            )}
+            <Image
+              // src={urlFor(data.image1).url()}
+              src='https://cdn.sanity.io/images/zggood1x/production/993aad0387f5f40262ec84fb4dc4b9c5ff097b43-1129x752.png'
+              alt="Great Photo"
+              className="h-full w-full object-cover object-center"
+              priority
+              width={500}
+              height={500}
+            />
           </div>
 
           <div className="overflow-hidden rounded-lg bg-gray-100 shadow-lg">
-            {/* <Image
-              src={urlFor(data.image2).url()}
+            <Image
+              // src={urlFor(data.image2).url()}
+              src='https://cdn.sanity.io/images/zggood1x/production/5083753e5d77465425c25a5d57807d7fd6412acc-844x740.png'
               alt="Great Photo"
               className="h-full w-full object-cover object-center"
               width={500}
               height={500}
               priority
-            /> */}
+            />
           </div>
         </div>
       </div>
