@@ -4,6 +4,10 @@ import './globals.css'
 import Navbar from './components/Navbar'
 import CartProvider from './components/Providers'
 import ShoppingCartModal from './components/ShoppingCartModal'
+import { Suspense } from 'react'
+import Loading from './loading'
+import NextTopLoader from 'nextjs-toploader';
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,11 +24,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <CartProvider>
-          <Navbar />
-          <ShoppingCartModal />
-          {children}
-        </CartProvider>
+        <NextTopLoader />
+        <Suspense fallback={<Loading />}>
+          <CartProvider>
+            <Navbar />
+            <ShoppingCartModal />
+            {children}
+          </CartProvider>
+        </Suspense>
       </body>
     </html>
   )
