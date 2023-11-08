@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { simplifiedProduct } from "../interface";
 import { client } from "../lib/sanity";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 async function getData() {
@@ -54,9 +53,11 @@ export default async function All_New_Products() {
                     </Link>
                   </h3>
                   <div className="flex items-center space-x-5">
-                    <p className="text-sm text-gray-500">
-                      {product.categoryName}
-                    </p>
+                    <Link href={`/${product.categoryName}`}>
+                      <p className="text-sm text-gray-500">
+                        {product.categoryName}
+                      </p>
+                    </Link>
                     <p className="text-md font-extralight text-blue-600">
                       ${product.price}
                     </p>
