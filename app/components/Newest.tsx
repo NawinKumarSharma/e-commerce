@@ -61,9 +61,11 @@ export default async function Newest() {
                     </Link>
                   </h3>
                   <div className="flex items-center space-x-5">
-                    <p className="text-sm text-gray-500">
-                      {product.categoryName}
-                    </p>
+                    <Link href={`/${product.categoryName}`}>
+                      <p className="text-sm text-gray-500">
+                        {product.categoryName}
+                      </p>
+                    </Link>
                     <p className="text-md font-extralight text-blue-600">
                       ${product.price}
                     </p>
