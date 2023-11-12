@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ShoppingBag } from "lucide-react";
 import { useShoppingCart } from "use-shopping-cart";
-import { UserButton, useUser } from "@clerk/nextjs";
 
 const links = [
   { name: "Home", href: "/" },
@@ -17,8 +16,6 @@ const links = [
 export default function Navbar() {
   const pathname = usePathname();
   const { handleCartClick } = useShoppingCart();
-
-  const { user, isLoaded } = useUser();
 
   return (
     <header className="mb-8 border-b">
@@ -61,8 +58,6 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {isLoaded && user && (
-          <>
             <div className="flex divide-x border-r sm:border-l">
               <Button
                 variant={"outline"}
@@ -74,10 +69,7 @@ export default function Navbar() {
                   Cart
                 </span>
               </Button>
-            </div>
-            <UserButton afterSignOutUrl="/" />
-          </>
-        )}
+            </div>        
       </div>
     </header>
   );

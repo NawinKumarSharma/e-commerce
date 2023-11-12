@@ -7,7 +7,6 @@ import ShoppingCartModal from './components/ShoppingCartModal'
 import { Suspense } from 'react'
 import Loading from './loading'
 import NextTopLoader from 'nextjs-toploader';
-import { ClerkProvider } from '@clerk/nextjs'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -17,25 +16,24 @@ export const metadata: Metadata = {
   description: 'Enjoy shopping cool clothes for men, women or teens',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>
-          <NextTopLoader />
-          <Suspense fallback={<Loading />}>
-            <CartProvider>
-              <Navbar />
-              <ShoppingCartModal />
-              {children}
-            </CartProvider>
-          </Suspense>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={inter.className}>
+        <NextTopLoader />
+        <Suspense fallback={<Loading />}>
+          <CartProvider>
+            <Navbar />
+            <ShoppingCartModal />
+            {children}
+          </CartProvider>
+        </Suspense>
+      </body>
+    </html>
   )
 }
