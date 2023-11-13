@@ -1,5 +1,6 @@
 "use client";
-
+import React from "react";
+import { signOut, useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -16,6 +17,7 @@ const links = [
 export default function Navbar() {
   const pathname = usePathname();
   const { handleCartClick } = useShoppingCart();
+  const { data: session }: any = useSession();
 
   return (
     <header className="mb-8 border-b">
@@ -57,19 +59,42 @@ export default function Navbar() {
             </div>
           ))}
         </nav>
-
-            <div className="flex divide-x border-r sm:border-l">
-              <Button
-                variant={"outline"}
-                onClick={() => handleCartClick()}
-                className="flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
+        {!session ? (
+          <>
+            <Link href="/login">
+              <li>Login</li>
+            </Link>
+            <Link href="/register">
+              <li>Register</li>
+            </Link>
+          </>
+        ) : (
+          <>
+            {session.user?.email}
+            <li>
+              <button
+                onClick={() => {
+                  signOut();
+                }}
+                className="p-2 px-5 -mt-1 bg-blue-800 rounded-full"
               >
-                <ShoppingBag />
-                <span className="hidden text-xs font-semibold text-gray-500 sm:block">
-                  Cart
-                </span>
-              </Button>
-            </div>        
+                Logout
+              </button>
+            </li>
+          </>
+        )}
+        <div className="flex divide-x border-r sm:border-l">
+          <Button
+            variant={"outline"}
+            onClick={() => handleCartClick()}
+            className="flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
+          >
+            <ShoppingBag />
+            <span className="hidden text-xs font-semibold text-gray-500 sm:block">
+              Cart
+            </span>
+          </Button>
+        </div>
       </div>
     </header>
   );
