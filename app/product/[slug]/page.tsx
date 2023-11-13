@@ -1,3 +1,6 @@
+import React from "react";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import AddToBag from "@/app/components/AddToBag";
 import CheckoutNow from "@/app/components/CheckoutNow";
 import ImageGallery from "@/app/components/ImageGallery";
@@ -7,6 +10,12 @@ import { Button } from "@/components/ui/button";
 import { Star, Truck } from "lucide-react";
 
 async function getData(slug: string) {
+
+  const session = await getServerSession();
+
+  if (!session) {
+    redirect("/register");
+  }
   const query = `*[_type == "product" && slug.current == "${slug}"][0] {
         _id,
           images,

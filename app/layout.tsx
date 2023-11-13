@@ -9,6 +9,9 @@ import Loading from './loading'
 import NextTopLoader from 'nextjs-toploader';
 
 
+import { getServerSession } from "next-auth";
+import SessionProvider from "@/utils/SessionProvider";
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -21,18 +24,22 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const session = await getServerSession();
 
   return (
     <html lang="en">
       <body className={inter.className}>
         <NextTopLoader />
-        <Suspense fallback={<Loading />}>
-          <CartProvider>
-            <Navbar />
-            <ShoppingCartModal />
-            {children}
-          </CartProvider>
-        </Suspense>
+        <SessionProvider session={session}>
+          <Suspense fallback={<Loading />}>
+            <CartProvider>
+              <Navbar />
+              <ShoppingCartModal />
+              {children}
+            </CartProvider>
+          </Suspense>
+        </SessionProvider>
+
       </body>
     </html>
   )
