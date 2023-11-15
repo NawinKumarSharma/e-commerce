@@ -11,7 +11,7 @@ const Register = () => {
 
   useEffect(() => {
     if (sessionStatus === "authenticated") {
-      router.replace("/dashboard");
+      router.replace("/");
     }
   }, [sessionStatus, router]);
 
@@ -24,6 +24,7 @@ const Register = () => {
     const email = e.target[0].value;
     const password = e.target[1].value;
 
+
     if (!isValidEmail(email)) {
       setError("Email is invalid");
       return;
@@ -35,7 +36,7 @@ const Register = () => {
     }
 
     try {
-      const res = await fetch("/api/register", {
+      const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
