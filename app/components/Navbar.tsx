@@ -61,26 +61,26 @@ export default function Navbar() {
         </nav>
         {!session ? (
           <>
-            <Link href="/login">
-              <li>Login</li>
+            <Link href="/login" className="text-indigo-700 hover:underline hover:text-green-700 transition duration-300 ease-in-out mr-4">
+              Login
             </Link>
-            <Link href="/register">
-              <li>Register</li>
+            <Link href="/register" className="text-indigo-700 hover:underline hover:text-green-700 transition duration-300 ease-in-out">
+              Register
             </Link>
           </>
         ) : (
           <>
-            {session.user?.email}
-            <li>
-              <button
+            <span className="hidden gap-12 lg:flex 2xl:ml-16 text-gray-600">{session.user?.email}</span>
+            <span>
+              <Button
                 onClick={() => {
                   signOut();
                 }}
-                className="p-2 px-5 -mt-1 bg-blue-800 rounded-full"
+                className="p-4 px-4 -mt-1 gap-12 lg:flex 2xl:ml-16 bg-blue-800 rounded-full"
               >
                 Logout
-              </button>
-            </li>
+              </Button>
+            </span>
           </>
         )}
         <div className="flex divide-x border-r sm:border-l">
