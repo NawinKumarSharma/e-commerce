@@ -22,10 +22,10 @@ export default async function All_New_Products() {
   const data: simplifiedProduct[] = await getData();
 
   return (
-    <div className="bg-white">
+    <div className="min-h-[550px] sm:min-h-[650px] bg-gray-100 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-2xl font-bold tracking-tight">
             All Our Newest products
           </h2>
         </div>
@@ -47,14 +47,14 @@ export default async function All_New_Products() {
 
               <div className="mt-4 flex justify-between">
                 <div>
-                  <h3 className="text-sm text-gray-700">
+                  <h3 className="text-sm">
                     <Link href={`/product/${product.slug}`}>
                       {product.name}
                     </Link>
                   </h3>
                   <div className="flex items-center space-x-5">
                     <Link href={`/${product.categoryName}`}>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-gray-400">
                         {product.categoryName}
                       </p>
                     </Link>
