@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ShoppingBag } from "lucide-react";
 import { useShoppingCart } from "use-shopping-cart";
+import DarkMode from "./DarkMode";
 
 const links = [
   { name: "Home", href: "/" },
@@ -51,7 +52,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.href}
-                  className="text-lg font-semibold text-gray-600 transition duration-100 hover:text-primary"
+                  className="text-lg font-semibold text-gray-600 dark:text-white transition duration-100 hover:text-primary"
                 >
                   {link.name}
                 </Link>
@@ -83,17 +84,20 @@ export default function Navbar() {
             </span>
           </>
         )}
-        <div className="flex divide-x border-r sm:border-l">
+        <div className="flex divide-x border-r dark:bg-gray-950 sm:border-l">
           <Button
             variant={"outline"}
             onClick={() => handleCartClick()}
-            className="flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
+            className="flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 dark:bg-gray-95 md:h-24 md:w-24 rounded-none"
           >
             <ShoppingBag />
-            <span className="hidden text-xs font-semibold text-gray-500 sm:block">
+            <span className="hidden text-xs font-semibold text-gray-500 dark:bg-gray-950 dark:text-white  sm:block">
               Cart
             </span>
           </Button>
+        </div>
+        <div>
+          <DarkMode />
         </div>
       </div>
     </header>
