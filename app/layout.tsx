@@ -11,6 +11,7 @@ import NextTopLoader from 'nextjs-toploader';
 
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/utils/SessionProvider";
+import Footer from './components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -38,6 +39,7 @@ export default async function RootLayout({
               {children}
             </CartProvider>
           </Suspense>
+            <Footer />  
         </SessionProvider>
 
       </body>
