@@ -95,7 +95,7 @@ export default async function ProductPge({
                 image={data.images[0]}
                 name={data.name}
                 price={data.price}
-                key={data._id}
+                key={`addtobag-${data._id}`}
                 price_id={data.price_id}
               />
               <CheckoutNow
@@ -104,7 +104,7 @@ export default async function ProductPge({
                 image={data.images[0]}
                 name={data.name}
                 price={data.price}
-                key={data._id}
+                key={`checkout-${data._id}`}
                 price_id={data.price_id}
               />
             </div>

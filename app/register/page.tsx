@@ -24,18 +24,22 @@ const Register = () => {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
-
-
+  
     if (!isValidEmail(email)) {
       setError("Email is invalid");
       return;
     }
-
-    if (!password || password.length < 8) {
-      setError("Password is invalid");
+  
+    if (!password) {
+      setError("Password is required");
       return;
     }
-
+  
+    if (password.length < 8) {
+      setError("Password should be atleast 8 characters");
+      return;
+    }
+  
     try {
       const res = await fetch("/api/auth/register", {
         method: "POST",
@@ -59,6 +63,7 @@ const Register = () => {
       console.log(error);
     }
   };
+  
 
   if (sessionStatus === "loading") {
     return <Loading />
