@@ -50,10 +50,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 
+## Preview
 
-## Tests
+[screencast-from-2024-05-12-02-19-24_qvn9Zgdn.webm](https://github.com/NawinKumarSharma/e-commerce/assets/126372969/9ac2c57d-c026-45cd-b8b0-0681c2512435)
 
-Not implemented properly yet
+or
+https://www.kapwing.com/videos/663fde853bc2d77f7415eed5
 
 ## Author
 
