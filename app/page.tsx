@@ -1,4 +1,3 @@
-import Footer from './components/Footer';
 import Hero from './components/Hero'
 import Newest from './components/Newest'
 

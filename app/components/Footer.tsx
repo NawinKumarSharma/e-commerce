@@ -1,7 +1,6 @@
 'use client'
 
-import React, { useState } from "react";
-import Image from "next/image";
+import React from "react";
 import {
   FaFacebook,
   FaInstagram,
@@ -37,11 +36,11 @@ const Footer = () => {
           <div className=" py-8 px-4 ">
             <h1 className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3">
               {/* <img src={footerLogo} alt="Logo" className="max-w-[50px]" /> */}
-             Ur Next Bazaar
+              Ur Next Bazaar
             </h1>
             <p className="">
-            We sell only the most exclusive and high quality products for you.
-            We are the best so come and shop with us.{" "}
+              We sell only the most exclusive and high quality products for you.
+              We are the best so come and shop with us.{" "}
             </p>
             <br />
             <div className="flex items-center gap-3">
@@ -73,8 +72,8 @@ const Footer = () => {
                   Important Links
                 </h1>
                 <ul className={`flex flex-col gap-3`}>
-                  {FooterLinks.map((link) => (
-                    <li className="cursor-pointer hover:translate-x-1 duration-300 hover:text-primary space-x-1 text-gray-500">
+                  {FooterLinks.map((link, index) => (
+                    <li key={`important-link-${index}`} className="cursor-pointer hover:translate-x-1 duration-300 hover:text-primary space-x-1 text-gray-500">
                       <span>&#11162;</span>
                       <span>{link.title}</span>
                     </li>
@@ -88,8 +87,8 @@ const Footer = () => {
                   Links
                 </h1>
                 <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link) => (
-                    <li className="cursor-pointer hover:translate-x-1 duration-300 hover:text-primary space-x-1 text-gray-500">
+                  {FooterLinks.map((link, index) => (
+                    <li key={`link-${index}`} className="cursor-pointer hover:translate-x-1 duration-300 hover:text-primary space-x-1 text-gray-500">
                       <span>&#11162;</span>
                       <span>{link.title}</span>
                     </li>
@@ -102,10 +101,9 @@ const Footer = () => {
                 <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">
                   Location
                 </h1>
-                {/* <ul className="list-disc list-inside"> */}
                 <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link) => (
-                    <li className="cursor-pointer hover:translate-x-1 duration-300 hover:text-primary space-x-1 text-gray-500">
+                  {FooterLinks.map((link, index) => (
+                    <li key={`location-${index}`} className="cursor-pointer hover:translate-x-1 duration-300 hover:text-primary space-x-1 text-gray-500">
                       <span>&#11162;</span>
                       <span>{link.title}</span>
                     </li>
@@ -114,6 +112,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
+
         </div>
         <div>
           <div className="text-center py-10 border-t-2 border-gray-300/50">
